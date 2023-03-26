@@ -17,6 +17,8 @@ print(f"Current database version: {db_version}")
 # Insert data into the table
 waifu.execute("INSERT INTO waifus (name, age) VALUES ('Nami', 21)")
 waifu.execute("INSERT INTO waifus (name, age) VALUES ('Robin', 18)")
+waifu.execute("INSERT INTO waifus (name, age) VALUES ('hinata', 18)")
+
 waifu.commit()
 
 # Select data from the table
