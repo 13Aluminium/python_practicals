@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Python Code Repository</title>
-  <!-- Add Bootstrap stylesheet and JavaScript -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <title>Code Repository</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-  <!-- Add a navbar with a Python logo -->
-  <nav class="navbar navbar-dark bg-primary">
+  <!-- Navbar with Python logo -->
+  <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand" href="#">
-      <img src="https://www.python.org/static/community_logos/python-logo-generic.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-      Python Code Repository
+      <img src="https://www.python.org/static/img/python-logo.png" height="30" alt="Python logo">
     </a>
   </nav>
-  
+
   <!-- Add a dropdown menu for selecting a folder -->
   <div class="container mt-4">
     <div class="dropdown">
@@ -25,60 +21,24 @@
         Select a folder
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="py1">py1</a>
-        <a class="dropdown-item" href="py2">py2</a>
-        <a class="dropdown-item" href="py3">py3</a>
-        <li><a href="code/py2/01/1.1.py" class="dropdown-item">py2/01/file1.py</a></li>
-
+        <a class="dropdown-item" href="#" onclick="showSubmenu('py1')">py1</a>
+        <a class="dropdown-item" href="#" onclick="showSubmenu('py2')">py2</a>
+        <a class="dropdown-item" href="#" onclick="showSubmenu('py3')">py3</a>
       </div>
     </div>
   </div>
-  
-  <!-- Add an empty div for displaying code files -->
-  <div class="container mt-4">
-    <div id="code-display"></div>
-  </div>
-  
-  <!-- Add a footer with a message about all rights reserved -->
-  <footer class="bg-primary text-white mt-4 py-3">
-    <div class="container">
-      <span>&copy; All Rights Reserved</span>
-    </div>
-  </footer>
-  
-  <!-- Add client-side code for displaying code files -->
-  <script>
-    const codeFiles = {
-      "file1.py": "code/file1.py",
-      "file2.py": "code/file2.py",
-      "file3.py": "code/file3.py"
-      // Add more file mappings as needed
-       "py2/01/1.1.py": "code/py2/01/1.1.py",
-  "py2/01/1.2.py": "code/py2/01/1.2.py",
-    };
-    
-    function displayCodeFiles(folderName) {
-      const codeDisplay = document.getElementById("code-display");
-      const files = Object.values(codeFiles).filter(file => file.startsWith(`${folderName}/`));
-      codeDisplay.innerHTML = "";
-      files.forEach(file => {
-        fetch(file)
-          .then(response => response.text())
-          .then(fileContent => {
-            const fileDisplay = document.createElement("div");
-            const fileName = file.split("/").pop();
-             fileDisplay.innerHTML = `<h3>${fileName}</h3><pre><code>${fileContent}</code></pre>`;
-          codeDisplay.appendChild(fileDisplay);
-        })
-        .catch(error => console.error(`Failed to fetch ${file}`, error));
-    });
-  }
 
-  // Add an event listener for the dropdown menu
-  const dropdownMenu = document.querySelector(".dropdown-menu");
-  dropdownMenu.addEventListener("click", (event) => {
-    event.preventDefault();
-    const folderName = event.target.getAttribute("href");
-    displayCodeFiles(folderName);
-  });
-</script>
+  <!-- Add a container for displaying files in a folder -->
+  <div class="container mt-4" id="fileDisplay"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNS"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
